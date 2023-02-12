@@ -75,7 +75,7 @@ row.names(t2h)=categoria
 ```{r}
 paleta6=c("#447270", "#6B9493", "#F6E271", "#F6B916", "#F69312", "#BC6C25")
 p1=ggplot(CarreraLuz22F, aes(y=timerun/60, x=categoria))+
-  geom_jitter(color="#034A94", size=1, alpha=0.9) +
+  geom_jitter(color="#4DC58D", size=1, alpha=0.9) +
   aes(color=paleta6)+
   labs(title = " ",
        y= "tiempo - min",
@@ -97,7 +97,7 @@ ggplot(CarreraLuz22M, aes(x = categoria, y = timerun/60 )) +
   # facet_wrap(~sex, ncol=1, labeller = labeller(dose = etiquetas))+
   labs(title = "", y= "tiempo - min", x= "categorías")+
   scale_fill_brewer() +
-  #scale_fill_manual(values = c("#00070D", "#012447", "#034A94", "#0570E1", "#3998FB","#37B6FC"))+
+  #scale_fill_manual(values = c("#4DC58D", "#54CCCD", "#4DC58D", "#48BB4F", "#70AD47","#37B6FC"))+
   theme(legend.position = "none")
 t2h
 ```
@@ -110,7 +110,7 @@ ggplot(CarreraLuz22F, aes(x = categoria, y = timerun/60 )) +
   # facet_wrap(~sex, ncol=1, labeller = labeller(dose = etiquetas))+
   labs(title = "", y= "tiempo - min", x= "categorías")+
   scale_fill_brewer() +
-  #scale_fill_manual(values = c("#00070D", "#012447", "#034A94", "#0570E1", "#3998FB","#37B6FC"))+
+  #scale_fill_manual(values = c("#4DC58D", "#54CCCD", "#4DC58D", "#48BB4F", "#70AD47","#37B6FC"))+
   theme(legend.position = "none")
 t2m
 ```
@@ -125,52 +125,92 @@ knitr::include_graphics("carrera1.png")
 
 **Salida**: Hotel Intercontinental, calle 5, Carrera 6, carrera 4c, carrera1, carrera 4, calle de la escopeta, museo arqueológico la merced, bulevar del rio, puente Ortiz, av 2N, parque lineal rio Cali av2n, calle 25, parque lineal av1n, calle 13, carrera 1 calle 12, carrera 5, calle 10, gobernación del valle, edificio Aristi carrera 9, calle 9 plazoleta de san francisco, bulevar del rio, calle 8, carrera 4, carrera 3ª, parque del peñón, carrera 3, carrera 3ª oeste, calle 5 oeste, carrera 4, av Belalcázar, carrera 2ª oeste, librería nacional, carrera 1c, museo la tertulia, av Colombia, pepe ganga, carrera 3, carrera 2, carrera 3ª, av Colombia, carrera 4, meta hotel intercontinental. [juanchocorrelon.com](https://juanchocorrelon.com/intercontinental-10k-luz-2022/#10k)
 
-## Column {data-width="400"}
+## Column {data-width="200"}
 
-### Tiempo mujeres categoría Abierta
+### Tiempo Categoría Juvenil
 
 ```{r}
 # seleccion de bases
-dataFc2=subset(CarreraLuz22, (CarreraLuz22$sex=="Mujer" & CarreraLuz22$categoria=="2. Abierta")) # dataset de mujeres
+dataFc2=subset(CarreraLuz22, (CarreraLuz22$categoria=="1. Juvenil"))
 x=dataFc2$timerun/60
-hist(x, xlim=c(30,120), ylim=c(0,80),las=1,
+hist(x, xlim=c(30,100), ylim=c(0,6),las=1,
 main = " ",
 xlab="tiempo (min)",
 ylab = "frecuencia",
-col ="#ee964b")
+col ="#5B9BD5")
 ```
 
-### Tiempo hombres categoría Abierta
+### Tiempo categoría Abierta
 
 ```{r}
 # seleccion de bases
-dataMc2=subset(CarreraLuz22, (CarreraLuz22$sex=="Hombre" & CarreraLuz22$categoria=="2. Abierta")) # dataset de mujeres
-x=dataMc2$timerun/60
-hist(x, xlim=c(30,120), ylim=c(0,250),las=1,
+dataFc2=subset(CarreraLuz22, (CarreraLuz22$categoria=="2. Abierta"))
+x=dataFc2$timerun/60
+hist(x, xlim=c(30,110), ylim=c(0,220),las=1,
 main = " ",
 xlab="tiempo (min)",
 ylab = "frecuencia",
-col ="#ee964b")
+col ="#54CCCD")
 ```
 
-## Column {data-width="50"}
+### Tiempo Categoría Veteranos A
+
+```{r}
+# seleccion de bases
+dataFc2=subset(CarreraLuz22, (CarreraLuz22$categoria=="3. Veteranos A"))
+x=dataFc2$timerun/60
+hist(x, xlim=c(20,120), ylim=c(0,150),las=1,
+main = " ",
+xlab="tiempo (min)",
+ylab = "frecuencia",
+col ="#4DC58D")
+```
+
+## Column {data-width="200"}
+### Tiempo Categoría Veteranos B
+
+```{r}
+# seleccion de bases
+dataFc2=subset(CarreraLuz22, (CarreraLuz22$categoria=="4. Veteranos B"))
+x=dataFc2$timerun/60
+hist(x, xlim=c(20,120), ylim=c(0,150),las=1,
+main = " ",
+xlab="tiempo (min)",
+ylab = "frecuencia",
+col ="#48BB4F")
+```
+
+### Tiempo Categoría Veteranos C
+
+```{r}
+# seleccion de bases
+dataFc2=subset(CarreraLuz22, (CarreraLuz22$categoria=="5. Veteranos C"))
+x=dataFc2$timerun/60
+hist(x, xlim=c(30,100), ylim=c(0,50),las=1,
+main = " ",
+xlab="tiempo (min)",
+ylab = "frecuencia",
+col ="#70AD47")
+```
+
+## Column {data-width="250"}
 
 ### minimo {.value-box}
 
 ```{r}
 valueBox(value =paste(round(min(CarreraLuz22$timerun/60),1), "min"), 
-         caption = "Tiempo ganador", 
-         icon = "fa-thumbs-up", 
-         color = "#0EB0C6")
+         caption = "Tiempo del ganador", 
+         icon = "ion-flash-off", 
+         color = "#FFC000")
 ```
 
 ### velocidad {.value-box}
 
 ```{r}
 valueBox(value =paste(round(10070/min(CarreraLuz22$timerun),2),"m/s"), # ud1$cierre, 
-         caption = "Máxima velocidad", 
-         icon = "fa-clock", 
-         color = "#0EB0C6")
+         caption = "Velocidad Máxima", 
+         icon = "ion-fork-repo", 
+         color = "#C7F711")
 ```
 
 ### distancia {.value-box}
@@ -178,8 +218,8 @@ valueBox(value =paste(round(10070/min(CarreraLuz22$timerun),2),"m/s"), # ud1$cie
 ```{r}
 valueBox(value = paste(10.07,"Km"), #ud1$min, 
          caption = "Distancia recorrida", 
-         icon = "fa-solod fa-person-walking-arrow-right", 
-         color = "#0EB0C6")
+         icon = "ion-forward", 
+         color = "#67EF21")
 ```
 
 ### volumen {.value-box}
@@ -187,8 +227,17 @@ valueBox(value = paste(10.07,"Km"), #ud1$min,
 ```{r}
 valueBox(value = paste(length(CarreraLuz22$timerun),"atletas"), 
          caption = "Número de participantes", 
-         icon = "fa-people", 
-         color = "#0EB0C6")
+         icon = "ion-ios-people", 
+         color = "#30E845")
+```
+
+### no se {.value-box}
+
+```{r}
+valueBox(value = paste(round(length(CarreraLuz22M$timerun)/length(CarreraLuz22$timerun)*100,2),"%"), 
+         caption = "Porcentaje hombres", 
+         icon = "ion-male", 
+         color = "#3FE19B")
 ```
 
 ### porcentaje {.value-box}
@@ -196,8 +245,8 @@ valueBox(value = paste(length(CarreraLuz22$timerun),"atletas"),
 ```{r}
 valueBox(value = paste(round(length(CarreraLuz22F$timerun)/length(CarreraLuz22$timerun)*100,2),"%"), 
          caption = "Porcentaje mujeres", 
-         icon = "  ", 
-         color = "#0EB0C6")
+         icon = "ion-female", 
+         color = "#4ADCD2")
 ```
 
 ### promedio {.value-box}
@@ -205,6 +254,6 @@ valueBox(value = paste(round(length(CarreraLuz22F$timerun)/length(CarreraLuz22$t
 ```{r}
 valueBox(value = paste(round(mean(CarreraLuz22$timerun/60),2),"min"), 
          caption = "Tiempo promedio de carrera", 
-         icon = "  ", 
-         color = "#0EB0C6")
+         icon = "ion-android-walk", 
+         color = "#5B9BD5")
 ```
